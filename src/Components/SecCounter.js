@@ -14,20 +14,19 @@ class SecCounter extends React.Component {
 
   componentDidMount() {
     console.log("Component did Mount()");
-    // console.log(this.state.isVisible);
-    // console.log(this.state.counter);
+
+    //------------ Auto Increment Functions-----------
+
     this.setState({
       intervall: setInterval(
         () => this.setState({ timer: this.state.timer + 1 }),
         1000
-      )
+      ),
     });
   }
 
   componentDidUpdate() {
     console.log("Component did Update() ");
-    // console.log(this.state.isVisible);
-    // console.log(this.state.counter);
   }
 
   componentWillUnmount() {
@@ -47,8 +46,6 @@ class SecCounter extends React.Component {
   Reset = () => {
     console.log("Reset" + this.state.count);
     this.setState({ count: 0 });
-
-    //------------------------ Auto Increment Functions-------------------------------
   };
 
   render() {
