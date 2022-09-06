@@ -15,7 +15,7 @@ class SecCounter extends React.Component {
   componentDidMount() {
     console.log("Component did Mount()");
 
-    //------------ Auto Increment Functions-----------
+    //---------- Auto Increment Functions---------
 
     this.setState({
       intervall: setInterval(
