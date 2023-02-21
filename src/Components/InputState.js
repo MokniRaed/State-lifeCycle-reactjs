@@ -1,40 +1,69 @@
 import React from "react";
-import Form from "react-bootstrap/Form";
-import InputGroup from "react-bootstrap/InputGroup";
-
-function RenderName(props) {
-  return <h1>Hello, {props.name}</h1>;
-}
 
 class InputState extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       name: "Test Default",
+      time: 0
     };
   }
 
   changeName = (e) => {
-    this.setState({ name: e.target.value }, () => {
+    this.setState({ name: e }, () => {
       console.log(this.state);
     });
   };
+  // It will  run before the creation of the component
+  componentWillMount() 
+  { 
+
+      console.log("componentWillMount()"); 
+  } 
+  // It will run on the creation of the component
+  componentDidMount() 
+  { 
+      console.log("componentDidMount()"); 
+  } 
+  // It will run before the update of the component
+  componentWillUpdate() 
+  { 
+      console.log("componentWillUpdate()"); 
+  } 
+//It will run on the update of the component
+  componentDidUpdate() 
+  { 
+    setInterval(() => {
+      this.setState({time: this.state.time+1})
+      
+    }, 1000);
+      console.log("componentDidUpdate()"); 
+  } 
+
+ static getDerivedStateFromProps() {
+
+  console.log("getDerivedStateFromProps()"); 
+
+
+  }
+  //It will run on the destruction of the component
+
+  componentWillUnmount(){
+    console.log("componentWillUnmount()"); 
+
+  }
+
 
   render() {
     return (
-      <div style={{ marginTop: "50px" }}>
-        <InputGroup size="lg">
-          <InputGroup.Text id="inputGroup-sizing-lg">
-            Set what you want
-          </InputGroup.Text>
-          <Form.Control
-            onChange={(e) => this.changeName(e)}
-            aria-label="Large"
-            aria-describedby="inputGroup-sizing-sm"
-          />
-        </InputGroup>
-        <RenderName style={{ marginTop: "20px" }} name={this.state.name} />{" "}
-      </div>
+      <>
+        <center>
+          <input onChange={(e) => this.changeName(e.target.value)} placeholder="test" />
+          <h1>{this.state.name}</h1>
+          <h3>{this.state.time}</h3>
+
+        </center>
+      </>
     );
   }
 }

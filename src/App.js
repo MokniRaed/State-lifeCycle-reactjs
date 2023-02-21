@@ -2,11 +2,15 @@ import "./App.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import InputState from './Components/InputState'
 
+import React from 'react'
 
-
-function App() {
-  <>
-    <InputState/>
-  </>
+const App = () => {
+  return (
+    <div>
+          <InputState/>
+    </div>
+  )
 }
-export default App;
+
+export default App
+
